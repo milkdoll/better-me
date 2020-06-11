@@ -13,17 +13,20 @@
 				height: 100%;
 				overflow: hidden;
 			}
+			
 			.mui-bar {
 				-webkit-box-shadow: none;
 				box-shadow: none;
 			}
-			.mui-content-head{
+			
+			.mui-content-head {
 				height: 50px;
 				padding: 5px 15px;
 			}
-			.mui-content-head a{
+			
+			.mui-content-head a {
 				border: 1px solid #ddd;
-				display:inline-block;
+				display: inline-block;
 				border-radius: 20px;
 				width: 40px;
 				height: 40px;
@@ -39,8 +42,9 @@
 				<div class="mui-indexed-list-search mui-input-row mui-search">
 					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索用户">
 				</div>
-				<div class="mui-indexed-list-bar">
-					<a>↑</a>
+				<div id="indexed_list_bar" class="mui-indexed-list-bar">
+				</div>
+				<!--<a>↑</a>
 					<a>☆</a>
 					<a>A</a>
 					<a>B</a>
@@ -68,22 +72,21 @@
 					<a>X</a>
 					<a>Y</a>
 					<a>Z</a>
-					<a>#</a>
-				</div>
+					<a>#</a>-->
 				<div class="mui-indexed-list-alert"></div>
 				<div class="mui-indexed-list-inner">
 					<div class="mui-indexed-list-empty-alert">没有数据</div>
-					<ul class="mui-table-view">
+					<ul id="table_view" class="mui-table-view">
 						<li data-group="↑" class="mui-table-view-divider mui-indexed-list-group" style="padding: 0px;"></li>
-						<li data-value="↑" data-tags="↑" class="mui-content-head">
+						<li data-value="↑" class="mui-content-head">
 							<a id="icon-personadd" onclick="addUser()"><span class="mui-icon mui-icon-personadd"></span></a>
 							<a id="icon-personadd" style="color: red;" onclick="deleteUser()"><span class="mui-icon mui-icon-trash"></span></a>
 						</li>
-						<li data-group="☆" class="mui-table-view-divider mui-indexed-list-group">星标用户</li>
-						<li data-value="☆AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item">阿克苏机场</li>
-						<li data-value="☆BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item">阿拉山口机场</li>
-						<li data-value="☆AAT" data-tags="ALeTai" class="mui-table-view-cell mui-indexed-list-item">阿勒泰机场</li>
-						<li data-value="☆NGQ" data-tags="ALiKunSha" class="mui-table-view-cell mui-indexed-list-item">阿里昆莎机场</li>
+						<!--<li data-group="☆" class="mui-table-view-divider mui-indexed-list-group">星标用户</li>
+						<li data-value="☆AKU" class="mui-table-view-cell mui-indexed-list-item">阿克苏机场</li>
+						<li data-value="☆BPL" class="mui-table-view-cell mui-indexed-list-item">阿拉山口机场</li>
+						<li data-value="☆AAT" class="mui-table-view-cell mui-indexed-list-item">阿勒泰机场</li>
+						<li data-value="☆NGQ" class="mui-table-view-cell mui-indexed-list-item">阿里昆莎机场</li>
 						<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
 						<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item">阿克苏机场</li>
 						<li data-value="BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item">阿拉山口机场</li>
@@ -268,15 +271,76 @@
 						<li data-group="#" class="mui-table-view-divider mui-indexed-list-group">#</li>
 						<li data-value="#ZUH" data-tags="ZhuHaiSanZao" class="mui-table-view-cell mui-indexed-list-item">珠海三灶机场</li>
 						<li data-value="#ZUH" data-tags="ZhuHaiSanZao" class="mui-table-view-cell mui-indexed-list-item">珠海三灶机场</li>
-						<li data-value="#ZUH" data-tags="ZhuHaiSanZao" class="mui-table-view-cell mui-indexed-list-item">珠海三灶机场</li>
+						<li data-value="#ZUH" data-tags="ZhuHaiSanZao" class="mui-table-view-cell mui-indexed-list-item">珠海三灶机场</li>-->
 					</ul>
 				</div>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/mui.indexedlist.js"></script>
+		<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
+
+			var users = [{
+				id: '1',
+				indexGroup: '☆',
+				indexValue: '☆zzz',
+				userName: '用户1'
+			},{
+				id: '2',
+				indexGroup: '☆',
+				indexValue: '☆xxx',
+				userName: '用户2'
+			},{
+				id: '3',
+				indexGroup: '☆',
+				indexValue: '☆zzza',
+				userName: '用户3'
+			},{
+				id: '4',
+				indexGroup: 'F',
+				indexValue: 'Fzzza',
+				userName: '用户4'
+			},{
+				id: '5',
+				indexGroup: 'F',
+				indexValue: 'Fcxz',
+				userName: '用户5'
+			},{
+				id: '6',
+				indexGroup: 'F',
+				indexValue: 'Fcxsxz',
+				userName: '用户6'
+			},{
+				id: '7',
+				indexGroup: 'H',
+				indexValue: 'Hzzza',
+				userName: '用户7'
+			},{
+				id: '8',
+				indexGroup: 'M',
+				indexValue: 'Mcxz',
+				userName: '用户8'
+			},{
+				id: '9',
+				indexGroup: 'Y',
+				indexValue: 'Ycxsxz',
+				userName: '用户9'
+			}];
+			
+			$(users).each(function(i,user){
+				var barHtml='<a>'+user.indexGroup+'</a>';
+				var listBarHtml=$('#indexed_list_bar').html();
+				if(listBarHtml.indexOf(barHtml)==-1){
+					var table='<li data-group="'+user.indexGroup+'" class="mui-table-view-divider mui-indexed-list-group">'+user.indexGroup+'</li>';
+					$('#table_view').append(table);
+					$('#indexed_list_bar').append(barHtml);
+				}
+				var table='<li data-value="'+user.indexValue+'" data-id="'+user.id+'" class="mui-table-view-cell mui-indexed-list-item">'+user.userName+'</li>';
+				$('#table_view').append(table);
+			});
+
 			mui.ready(function() {
 				var list = document.getElementById('list');
 				//calc hieght
@@ -284,11 +348,12 @@
 				//create
 				window.indexedList = new mui.IndexedList(list);
 			});
-			
-			function addUser(){
+
+			function addUser() {
 				alert('添加用户');
 			}
-			function deleteUser(){
+
+			function deleteUser() {
 				alert("删除用户");
 			}
 		</script>
