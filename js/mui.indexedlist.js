@@ -51,7 +51,7 @@
 		},
 		caleLayout: function() {
 			var self = this;
-			var withoutSearchHeight = (self.box.offsetHeight - self.el.search.offsetHeight) + 'px';
+			var withoutSearchHeight = (self.box.offsetHeight - (self.el.search==null?0:self.el.search.offsetHeight)) + 'px';
 			self.el.bar.style.height = withoutSearchHeight;
 			self.el.inner.style.height = withoutSearchHeight;
 			var barItemHeight = ((self.el.bar.offsetHeight - 40) / self.el.barItems.length) + 'px';
@@ -159,6 +159,9 @@
 		},
 		bindSearchEvent: function() {
 			var self = this;
+			if(self.el.searchInput==null){
+				return;
+			}
 			self.el.searchInput.addEventListener('input', function() {
 				var keyword = this.value;
 				self.search(keyword);

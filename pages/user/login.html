@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../../js/url.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			document.addEventListener("plusready", function() {
+				var name = plus.storage.getItem("username");
+				var pswd = plus.storage.getItem("password");
+				jQuery("#u_name").val(!name ? "" : name);
+				jQuery("#u_pswd").val(!pswd ? "" : pswd);
+			});
+
+			function login() {
+				var u_name = jQuery("#u_name").val();
+				var u_pswd = jQuery("#u_pswd").val();
+
+				if(u_name.length > 0) {
+					if(u_pswd.length > 0) {
+						mui("#btn_login").button('loading');
+						doLogin(u_name, u_pswd);
+					} else {
+						mui.toast("密码不能为空");
+					}
+				} else {
+					mui.toast("用户名不能为空");
+				}
+//				mui.openWindow({
+//					url: "pages/main.html",
+//					show: {
+//						aniShow: 'pop-in'
+//					}
+//				});
+//				mui("#btn_login").button('reset');
+			}
+
+			function doLogin(name, pswd) {
+				plus.storage.setItem("token", 1);
+				plus.storage.setItem("username", name);
+				plus.storage.setItem("password", pswd);
+				//加载模块
+				loadModules(1);
+				/*mui.ajax(LOGIN, {
+					data: {
+						username: name,
+						password: pswd,
+						deviceid: 1
+					},
+					dataType: "json",
+					type: "POST",
+					timeout: "120000",
+					success: function(result) {
+						if(result.status == "OK") {
+							plus.storage.setItem("token", result.token);
+							plus.storage.setItem("username", name);
+							plus.storage.setItem("password", pswd);
+							//加载模块
+							loadModules(result.token);
+						} else {
+							mui.toast("用户名或者密码错误");
+							mui("#btn_login").button('reset');
+						}
+					},
+					error: function(xhr, type, err) {
+						mui.toast("服务器异常");
+						mui("#btn_login").button('reset');
+					}
+				});*/
+			}
+
+			function loadModules(token) {
+				showMain(token);
+				/*mui.ajax(PERMISSION, {
+					headers: {
+						'deviceId': 1,
+						'token': token
+					},
+					dataType: "json",
+					type: "GET",
+					timeout: "120000",
+					success: function(result) {
+						if(result.status == "OK") {
+							showMain(result);
+						} else {
+							mui.toast("获取权限失败！");
+							mui("#btn_login").button('reset');
+						}
+					},
+					error: function(xhr, type, err) {
+						mui.toast("服务器异常");
+						mui("#btn_login").button('reset');
+					}
+				});*/
+			}
+
+			function showMain(loginInfo) {
+				var mainPage = "pages/drag.html";//loginInfo.loginModule;
+				mui.openWindow({
+					url: mainPage,//mainPage.moduleResource,
+					show: {
+						aniShow: 'pop-in'
+					}/*,
+					extras: {
+						components: loginInfo.components,
+						themeConfigs: loginInfo.themeConfigs
+					}*/
+				});
+				mui("#btn_login").button('reset');
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="text-align:center;padding: 10px;">
+				<img src="../../images/logo.png" style="width: 60%;height: auto;padding: 10px;" />
+				<p style="padding: 10px;font-size: 18px;color: #000000;">Better Me</p>
+				<div class="mui-card">
+					<div class="mui-card-header mui-text-center" style="text-align: center;background: #dd524d;">
+						<label style="width: 100%;color: #CCCCCC;font-size: 16px;">用户登录</label>
+					</div>
+					<form class="mui-input-group">
+						<div class="mui-input-row">
+							<input id="u_name" type="text" value="milkdoll" class="mui-input-clear" placeholder="登录用户名">
+						</div>
+						<div class="mui-input-row">
+							<input id="u_pswd" type="password" value="1" class="mui-input-password" placeholder="登录密码">
+						</div>
+					</form>
+				</div>
+				<div class="mui-input-row" style="margin: 0px 10px;">
+					<button id="btn_login" type="button" class="mui-btn mui-btn-danger" onclick="login()" style="margin:0px;width: 100%;font-size: 16px;color: #cccccc;">登&nbsp;&nbsp;录</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script>
+		mui.init();
+	</script>
+
+</html>

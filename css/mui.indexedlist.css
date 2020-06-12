@@ -63,8 +63,8 @@
 	background-color: #fafafa;
 }
 .mui-indexed-list-bar {
-	width: 23px;
-	background-color: lightgrey;
+	width: 40px;
+	background-color: none;
 	position: absolute;
 	height: 100%;
 	z-index: 10;
@@ -74,15 +74,13 @@
 .mui-indexed-list-bar a {
 	display: block;
 	text-align: center;
-	font-size: 11px;
+	font-size: 12px;
 	padding: 0px;
 	margin: 0px;
 	line-height: 15px;
 	color: #aaa;
 }
-.mui-indexed-list-bar.active {
-	background-color: rgb(200,200,200);
-}
+
 .mui-indexed-list-bar.active a {
 	color: #333;
 }
