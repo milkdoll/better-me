@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+			
+			#done.mui-disabled {
+				color: gray;
+			}
+			
+			.mui-control-content {
+				min-height: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1mobile">待办</a>
+					<a class="mui-control-item" href="#item2mobile">推迟</a>
+					<a class="mui-control-item" href="#item3mobile">已完成</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id="todo_list" class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-left mui-disabled">
+											<a onclick="addTodo()" class="mui-btn mui-btn-green mui-icon mui-icon-checkmarkempty"></a>
+											<a onclick="addTodo()" class="mui-btn mui-btn-grey mui-icon mui-icon-extra mui-icon-extra-top"></a>
+										</div>
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>
+											<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>
+											<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+										</div>
+										<div class="mui-slider-handle">
+											左右滑动均可显示多功能菜单
+										</div>
+										
+									</li>
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-left mui-disabled">
+											<a onclick="addTodo()" class="mui-btn mui-btn-green mui-icon mui-icon-checkmarkempty"></a>
+											<a onclick="addTodo()" class="mui-btn mui-btn-grey mui-icon mui-icon-extra mui-icon-extra-top"></a>
+										</div>
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>
+											<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>
+											<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+										</div>
+										<div class="mui-slider-handle">
+											左右滑动均可显示多功能菜单
+										</div>
+										
+									</li>
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-left mui-disabled">
+											<a onclick="addTodo()" class="mui-btn mui-btn-green mui-icon mui-icon-checkmarkempty"></a>
+											<a onclick="addTodo()" class="mui-btn mui-btn-grey mui-icon mui-icon-extra mui-icon-extra-top"></a>
+										</div>
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>
+											<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>
+											<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+										</div>
+										<div class="mui-slider-handle">
+											左右滑动均可显示多功能菜单
+										</div>
+										
+									</li>
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-left mui-disabled">
+											<a onclick="addTodo()" class="mui-btn mui-btn-green mui-icon mui-icon-checkmarkempty"></a>
+											<a onclick="addTodo()" class="mui-btn mui-btn-grey mui-icon mui-icon-extra mui-icon-extra-top"></a>
+										</div>
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>
+											<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>
+											<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+										</div>
+										<div class="mui-slider-handle">
+											左右滑动均可显示多功能菜单
+										</div>
+										
+									</li>
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-left mui-disabled">
+											<a onclick="addTodo()" class="mui-btn mui-btn-green mui-icon mui-icon-checkmarkempty"></a>
+											<a onclick="addTodo()" class="mui-btn mui-btn-grey mui-icon mui-icon-extra mui-icon-extra-top"></a>
+										</div>
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>
+											<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>
+											<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+										</div>
+										<div class="mui-slider-handle">
+											左右滑动均可显示多功能菜单
+										</div>
+										
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" style="" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" style="" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="mui-input-row" style="height: 40px;line-height: 40px;padding-top:2px;margin:2px;text-align: center;">
+					<a onclick="addTodo()">
+						<span style="font-size: 32px;" class="mui-icon mui-icon-plus"></span>
+					</a>
+					<a onclick="deleteTodo()">
+						<span style="color: red;font-size: 32px;" class="mui-icon mui-icon-trash"></span>
+					</a>
+				</div>-->
+
+			</div>
+			<script src="../../js/mui.min.js"></script>
+			<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
+			<script type="text/javascript" charset="utf-8">
+				mui.init();
+				(function($) {
+					$('.mui-scroll-wrapper').scroll({
+						indicators: false //是否显示滚动条
+					});
+				})(mui);
+
+				function addTodo() {
+					mui.openWindow({
+						url: "add.html"
+					});
+				}
+			</script>
+	</body>
+
+</html>

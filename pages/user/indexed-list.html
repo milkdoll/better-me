@@ -5,10 +5,21 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>用户索引列表</title>
-		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/mui.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
 		<link href="../../css/mui.indexedlist.css" rel="stylesheet" />
 		<style>
+			* {
+	margin: 0;
+	padding: 0;
+	/**禁止选择**/
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 			html,
 			body {
 				height: 100%;
@@ -33,59 +44,49 @@
 				position: relative;
 				margin: -11px 0;
 			}
-	
+			
 			.oa-contact-avatar {
 				width: 75px;
 			}
+			
 			.oa-contact-avatar img {
 				border-radius: 50%;
 			}
+			
 			.oa-contact-content {
 				width: 100%;
 			}
+			
 			.oa-contact-name {
 				margin-right: 20px;
 			}
-			.oa-contact-name, oa-contact-position {
+			
+			.oa-contact-name,
+			oa-contact-position {
 				float: left;
 			}
-			
 		</style>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<div id="title_user">
-			<h1 class="mui-title">
-				用户列表
-			</h1>
-			<div class="mui-content-head">
-				<a id="icon-search" onclick="searchSwitch()">
-					<span class="mui-icon mui-icon-search"></span>
-				</a>
-				<a id="icon-plus" onclick="addUser()">
-					<span class="mui-icon mui-icon-plus"></span>
-				</a>
-			</div>
-			</div>
-			<div id="search_user" style="display: none;">
-				<div class="mui-input-row mui-search" style="position: absolute;right: 40px;left: 8px;">
-					<input type="search" class="mui-input-clear" placeholder="搜索用户">
-				</div>
-				<a id="icon-search" onclick="searchSwitch()" style="float: right;">
-					<span class="mui-icon mui-icon-refreshempty"></span>
-				</a>
-			</div>
-		</header>
-
 		<div class="mui-content">
 			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索用户">
+				</div>
 				<div id="indexed_list_bar" class="mui-indexed-list-bar">
+					<a>↑</a>
 				</div>
 				<div class="mui-indexed-list-alert"></div>
 				<div class="mui-indexed-list-inner">
 					<div class="mui-indexed-list-empty-alert">没有数据</div>
 					<ul id="table_view" class="mui-table-view">
+						<li data-group="↑" style="display: none;" class="mui-table-view-divider mui-indexed-list-group">↑</li>
+						<li class="mui-table-view-cell mui-indexed-list-item">
+							<a id="icon-plus" onclick="addUser()">
+								<span class="mui-icon mui-icon-plus"></span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -173,47 +174,48 @@
 					$('#table_view').append(table);
 					$('#indexed_list_bar').append(barHtml);
 				}
-				var table = '<li data-value="' + user.indexValue + '" data-id="' + user.id + '" onclick="userDetail(this)" class="mui-table-view-cell mui-indexed-list-item">' +
+				var table = '<li data-value="' + user.indexValue + '" data-id="' + user.id + '" class="mui-table-view-cell mui-indexed-list-item user-detail-item">' +
 					'<div class="mui-slider-left mui-disabled">' +
-					'<a class="mui-btn mui-btn-red mui-icon mui-icon-email"></a>' +
-					'<a class="mui-btn mui-btn-yellow mui-icon mui-icon-phone"></a>' +
-					'<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>' +
+					'<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>' +
+					'<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>' +
+					'<a class="mui-btn mui-btn-grey mui-icon mui-icon-star"></a>' +
 					'</div>' +
-					/*'<div class="mui-slider-right mui-disabled">' +
-					'<a class="mui-btn mui-btn-grey mui-icon mui-icon-person"></a>' +
-					'<a class="mui-btn mui-btn-yellow mui-icon mui-icon-phone"></a>' +
-					'<a class="mui-btn mui-btn-red mui-icon mui-icon-email"></a>' +
-					'</div>' +*/
-					'<div class="mui-slider-handle">'+
-					'<div class="oa-contact-cell mui-table">'+
-					'<div class="oa-contact-avatar mui-table-cell">'+
-								'<img src="../../images/60x60.gif" />'+
-							'</div>'+
-							'<div class="oa-contact-content mui-table-cell">'+
-								'<div class="mui-clearfix">'+
-									'<h4 class="oa-contact-name">'+user.userName+'</h4>'+
-									'<span class="oa-contact-position mui-h6">员工</span>'+
-								'</div>'+
-								'<p class="oa-contact-email mui-h6">'+
-									'luoji@126.com'+
-								'</p>'+
-							'</div></div>'+
+					'<div class="mui-slider-right mui-disabled">' +
+					'<a class="mui-btn mui-btn-grey mui-icon mui-icon-star"></a>' +
+					'<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose"></a>' +
+					'<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>' +
+					'</div>' +
+					'<div class="mui-slider-handle">' +
+					'<div class="oa-contact-cell mui-table">' +
+					'<div class="oa-contact-avatar mui-table-cell">' +
+					'<img src="../../images/60x60.gif" />' +
+					'</div>' +
+					'<div class="oa-contact-content mui-table-cell">' +
+					'<div class="mui-clearfix">' +
+					'<h4 class="oa-contact-name">' + user.userName + '</h4>' +
+					'<span class="oa-contact-position mui-h6">员工</span>' +
+					'</div>' +
+					'<p class="oa-contact-email mui-h6">' +
+					'luoji@126.com' +
+					'</p>' +
+					'</div></div>' +
 					'</div></li>';
 				$('#table_view').append(table);
 			});
-
+			var btnArray = ['确认', '取消'];
 			$('#table_view').on('tap', '.mui-btn', function(event) {
 				var elem = this;
 				var li = elem.parentNode.parentNode;
 				mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
 					if(e.index == 0) {
 						li.parentNode.removeChild(li);
-					} else {
-						setTimeout(function() {
-							$.swipeoutClose(li);
-						}, 0);
 					}
 				});
+			});
+			
+			$('.user-detail-item').on('tap',function(e){
+				console.log(e.target)
+				userDetail(e.target);
 			});
 
 			mui.ready(function() {
@@ -223,18 +225,13 @@
 				//create
 				window.indexedList = new mui.IndexedList(list);
 			});
-			
+
 			function addUser() {
 				mui.openWindow({
 					url: "add.html"
 				});
 			}
 			
-			function searchSwitch(){
-				$('#search_user').toggle();
-				$('#title_user').toggle();
-			}
-
 			function userDetail(item) {
 				mui.openWindow({
 					url: "view.html",

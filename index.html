@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>BetterMe</title>
 		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
 		<link href="css/main.css" rel="stylesheet" />
 	</head>
 
@@ -13,40 +14,32 @@
 		<nav id="mui_bar_tab" class="mui-bar mui-bar-tab">
 		</nav>
 	</body>
-	<script src="js/mui.min.js"></script>
+	<script src="js/mui.min.js"></script> 
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		//mui初始化
 		mui.init();
 		var mainStyle = {
 			top: '0px',
-			left: '0px',
-			right: '0px',
 			bottom: '51px'
 		};
 
-		var barTabs = [{
+		var barTabs = [ {
 			id: '1',
-			url: 'pages/test/about.html',
-			label: '首页',
-			icon: 'mui-icon mui-icon-gear',
-			actived: false
-		}, {
+			url: 'pages/todo/list.html',
+			label: '日程',
+			icon: 'mui-icon mui-icon-extra mui-icon-extra-order',
+			actived: true
+		},{
 			id: '2',
 			url: 'pages/user/indexed-list.html',
-			label: '用户',
-			icon: 'mui-icon mui-icon-person-filled',
-			actived: true
-		}, {
-			id: '3',
-			url: 'pages/test/contact.html',
-			label: '首页3',
-			icon: 'mui-icon mui-icon-gear',
+			label: '便签',
+			icon: 'mui-icon mui-icon-paperclip',
 			actived: false
 		}, {
-			id: '4',
+			id: '3',
 			url: 'pages/test/setting.html',
-			label: '首页4',
+			label: '设置',
 			icon: 'mui-icon mui-icon-gear',
 			actived: false
 		}];
@@ -87,6 +80,7 @@
 		//选项卡点击事件
 		mui('.mui-bar-tab').on('tap', 'a', function(e) {
 			var targetTab = this.getAttribute('href');
+			var title=this.getAttribute('data-label');
 			if(targetTab == activeTab) {
 				return;
 			}

@@ -4,8 +4,6 @@
 	border-bottom: solid 1px #e3e3e3;
 	overflow: hidden;
 	background-color: #fafafa;
-	height: 300px;
-	cursor: default;
 }
 .mui-indexed-list-inner {
 	margin: 0px;
